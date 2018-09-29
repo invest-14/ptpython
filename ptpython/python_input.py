@@ -20,7 +20,7 @@ from prompt_toolkit.key_binding.vi_state import InputMode
 from prompt_toolkit.lexers import PygmentsLexer, DynamicLexer, SimpleLexer
 from prompt_toolkit.output import ColorDepth
 from prompt_toolkit.output.defaults import create_output
-from prompt_toolkit.styles import DynamicStyle, SwapLightAndDarkStyleTransformation, ConditionalStyleTransformation
+from prompt_toolkit.styles import DynamicStyle
 from prompt_toolkit.utils import is_windows
 from prompt_toolkit.validation import ConditionalValidator
 
@@ -533,9 +533,6 @@ class PythonInput(object):
             paste_mode=Condition(lambda: self.paste_mode),
             mouse_support=Condition(lambda: self.enable_mouse_support),
             style=DynamicStyle(lambda: self._current_style),
-            style_transformation=ConditionalStyleTransformation(
-                SwapLightAndDarkStyleTransformation(),
-                filter=Condition(lambda: self.swap_light_and_dark)),
             include_default_pygments_style=False,
             reverse_vi_search_direction=True)
 
